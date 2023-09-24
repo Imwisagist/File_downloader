@@ -1,9 +1,9 @@
 #!/usr/bin/env python
-
+ 
 import os
 import sys
 
-def main():
+def main():  # pragma: no cover
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')
     try:
         from django.core.management import execute_from_command_line
@@ -18,4 +18,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-    

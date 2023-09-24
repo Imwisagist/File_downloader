@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-SECRET_KEY = getenv('SECRET_KEY')
+SECRET_KEY = getenv('SECRET_KEY', 'secret-keygsdfgGFGDGFDG#%$@#23342')
 
 DEBUG = getenv('DEBUG') == 'True'
 
@@ -28,7 +28,7 @@ CELERY_TASK_TRACK_STARTED = True
 CELERY_TASK_TIME_LIMIT = 30 * 60
 CELERY_ACCEPT_CONTENT = ('application/json',)
 
-if DOCKER:
+if DOCKER:  # pragma: no cover
     CELERY_BROKER_URL = "redis://redis:6380/0"
     CELERY_RESULT_BACKEND = "redis://redis:6380/0"
 else:

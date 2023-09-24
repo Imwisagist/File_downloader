@@ -9,6 +9,9 @@ __pycache__/
 #VSCODE
 .vscode
 
+#Pycharm
+.idea
+
 # Distribution / packaging
 .Python
 build/
@@ -123,7 +126,6 @@ celerybeat.pid
 *.sage.py
 
 # Environments
-.env
 .venv
 env/
 venv/
