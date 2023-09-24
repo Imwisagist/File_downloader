@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "file-downloader"
+version = "0.1.0"
+description = ""
+authors = ["Dmitry.S <immwisagist@yandex.ru>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+Django = "^4.2.5"
+djangorestframework = "^3.14.0"
+celery = "^5.3.4"
+python-dotenv = "^1.0.0"
+gunicorn = "^21.2.0"
+redis = "^5.0.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

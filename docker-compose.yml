@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  redis:
+    container_name: redis
+    image: redis:5-alpine
+    command: redis-server --port 6380
+    env_file: .env
+    ports:
+      - "6380:6380"
+    restart: always
+
+  backend:
+    container_name: backend
+    build: .
+    command: >
+      /bin/sh -c "poetry run python manage.py migrate --no-input
+      && poetry run python manage.py collectstatic --no-input
+      && poetry run python manage.py runserver 0:8000"
+     # && poetry run gunicorn config.wsgi:application --bind 0.0.0.0:8000"
+    volumes:
+      - static:/app/static/
+      - uploaded_files:/app/uploaded_files/
+      - db_data:/app/db/
+    env_file: .env
+    ports:
+      - "8000:8000"
+    restart: always
+
+  celery:
+    container_name: celery
+    build: .
+    command: poetry run python -m celery -A config worker -l info
+    volumes:
+      - db_data:/app/db/
+    env_file: .env
+    restart: always
+
+volumes:
+  static:
+  uploaded_files:
+  db_data:
