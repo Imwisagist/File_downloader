@@ -1,4 +1,3 @@
-import os
 from os import getenv, path
 from pathlib import Path
 
@@ -59,7 +58,7 @@ ALLOWED_HOSTS = ('*',)
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static') 
+STATIC_ROOT = path.join(BASE_DIR, 'static') 
 
 LANGUAGE_CODE = 'ru'
 
@@ -99,7 +98,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db' / 'db.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
